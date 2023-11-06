@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Silver Village Theater</title>
+<meta charset="utf-8">
+<script>
+    // Redirect to a new page when a button is clicked
+    function redirectToPage(pageUrl) {
+        window.location.href = pageUrl;
+    }
+
+    var currentImageIndex = 0;
+    var images = document.getElementsByClassName("hot_movie_button");
+    var rotationInterval;
+
+    function startRotation() {
+        rotationInterval = setInterval(function() {
+            images[currentImageIndex].style.display = "none";
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            images[currentImageIndex].style.display = "block";
+        }, 5000);
+    }
+
+    function stopRotation() {
+        clearInterval(rotationInterval);
+    }
+
+    function previousImage() {
+        stopRotation();
+        images[currentImageIndex].style.display = "none";
+        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+        images[currentImageIndex].style.display = "block";
+        setTimeout(startRotation, 10000);
+    }
+
+    function nextImage() {
+        stopRotation();
+        images[currentImageIndex].style.display = "none";
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        images[currentImageIndex].style.display = "block";
+        setTimeout(startRotation, 10000);
+    }
+
+    window.onload = function() {
+        // Hide all images initially
+        for (var i = 0; i < images.length; i++) {
+            images[i].style.display = "none";
+        }
+
+        // Start the rotation
+        images[currentImageIndex].style.display = "block";
+        startRotation();
+    }
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display&display=swap" rel="stylesheet">
+
+<style>
+    /*global style */
+    /* Style the body */
+    body {
+        background-color: #1e1e1e; ;
+        max-width: 1200px;
+        min-width: 600px;
+        margin:auto;
+    }
+    /* Style the Header1 */
+    h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 64px;
+        text-align: center;
+        background: -webkit-linear-gradient(#757575, #bcbcbc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .underline{
+        width: 90%;
+        border: none;
+        border-top: 1px solid #757575; 
+        margin: 0 auto; 
+    }
+    /* Style the nav bar */
+    nav {
+        width: 90%;
+        margin-left: 5%;
+        /*font-family: 'Your Font', sans-serif; */
+        font-size: 24px;
+        font:bold;
+        background: -webkit-linear-gradient(#757575, #bcbcbc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-family: 'Open Sans', sans-serif;
+    }
+    nav a {
+        text-decoration: none; 
+    }
+    nav a:visited {
+        color: #ffffff; 
+    }
+    nav a:hover {
+        color: #ffffff;
+    }
+    nav ul {
+        display: flex;
+        list-style: none;
+        justify-content: space-between;
+    }
+    /* Global Style Ends Here */
+
+    /* Homepage Style */
+    #intro {
+        margin-bottom: 30px;
+    }
+
+    #intro h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 50px;
+        text-align: center;
+        color:#C0C0C0;
+    }
+
+    #movies {
+        margin-top: auto;
+    }
+
+    .arrow {
+        background-color: rgba(255, 255, 255, 0.5);
+        border: none;
+        cursor: pointer;
+        font-size: 2em;
+        position: absolute;
+        top: 69%;
+        transform: translateY(-50%);
+    }
+
+    .arrow.left {
+        left: 7%;
+    }
+
+    .arrow.right {
+        right: 7%;
+    }
+
+    /* Style the container for the pictures */
+    #New_Movies {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 300px;
+        width: auto;
+    }
+
+    .hot_movie_image {
+        height: 300px;
+        width: auto;
+        object-fit: cover; /* 保持图片的原始比例，多余部分会被裁剪 */
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+    
+    /* Style the pictures as buttons */
+    .movie_button, .hot_movie_button {
+        cursor: pointer;
+        margin: 10px;
+        border: none;
+        outline: none;
+        background-color: transparent;
+    }
+
+    .buy_now {
+        background: linear-gradient(to bottom right, #C0C0C0, #808080);
+        border: none;
+        color: white;
+        padding: 5px 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+        margin: 5px;
+        margin-bottom: 15px;
+        cursor: pointer;
+    }
+    
+    /* Style the square pictures */
+    .movie_image{
+        padding: 1%;
+        width: 175px;
+        height: auto;
+        margin: auto;
+    }
+
+    /* Style the container for the movie blocks */
+    #movies {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width:80%;
+        margin-left: 10%;
+    }
+    #movies h3{
+        font-family: 'Open Sans', sans-serif;
+        color:#C0C0C0;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    .description{
+        font-family: 'Open Sans', sans-serif;
+        color:#C0C0C0;
+    }
+    /* Style the movie blocks */
+    .movie_row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: auto; 
+    }
+
+    .movie_block {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        width: 200px;
+    }
+
+    .more_movies{
+        background: linear-gradient(to bottom right, #C0C0C0, #808080);
+        border: none;
+        color: white;
+        padding: 5px 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+        margin: 5px;
+        margin-bottom: 15px;
+        cursor: pointer;
+    }
+
+    footer {
+        text-align: center;
+        font-size: small;
+        background: -webkit-linear-gradient(#757575, #bcbcbc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+</style>
+</head>
+
+<body>
+<div id="wrapper">
+    <!--header-->
+    <h1>Silver Village</h1>
+
+
+    <!--nav bar-->
+    <hr class="underline">
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="Movie_list.html">Movies</a></li>
+                <li><a href="#">Cinemas</a></li>
+                <li><a href="#">Dining</a></li>
+                <li><a href="#">User Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="underline">
+
+
+    <!--scrolling pictures-->
+    <div id="intro">xcode-select --installxcode-select --install
+        <h2>New Trending Movies</h2>
+        <!-- Container for the pictures -->
+        <div id="New_Movies">
+            <!-- Pictures as buttons -->
+            <button class="hot_movie_button" onclick="redirectToPage('movie1.html')">
+                <img class="hot_movie_image" src="images/GuZhuYiZhi.png" alt="GuZhuYiZhi">
+            </button>
+            <button class="hot_movie_button" onclick="redirectToPage('movie2.html')">
+                <img class="hot_movie_image" src="images/Oppenheimer.jpg" alt="Oppenheimer">
+            </button>
+            <button class="hot_movie_button" onclick="redirectToPage('movie3.html')">
+                <img class="hot_movie_image" src="images/barbie.jpeg" alt="Barbie">
+            </button>
+            <button class="arrow left" onclick="previousImage()">&#8592;</button>
+            <button class="arrow right" onclick="nextImage()">&#8594;</button>
+        </div>
+    </div>
+    <hr class="underline">
+
+    <!--movie list-->
+    <div id="movies">
+        <div style="text-align: left; width: 94%;">
+            <h2 style=" font-family: 'Open Sans', sans-serif;
+            color:#C0C0C0;
+            ">Now Showing:</h2>
+        </div>
+        <!--1st row-->
+        <div class="movie_row">
+            <div class="movie_block">
+                <button class="movie_button" onclick="redirectToPage('movie4.html')">
+                    <img class="movie_image" src="images/img4007.webp" alt="Movie 4">
+                </button>
+                <h3>Movie 4</h3>
+                <p class="description"></p>
+                <button class="buy_now" onclick="redirectToPage('movie4.html')">Buy Now</button>
+            </div>
+
+            <div class="movie_block">
+                <button class="movie_button" onclick="redirectToPage('movie5.html')">
+                    <img class="movie_image" src="images/img4007.webp" alt="Movie 5">
+                </button>
+                <h3>Movie 5</h3>
+                <p class="description"></p>
+                <button class="buy_now" onclick="redirectToPage('movie5.html')">Buy Now</button>
+            </div>
+
+            <div class="movie_block">
+                <button class="movie_button" onclick="redirectToPage('movie6.html')">
+                    <img class="movie_image" src="images/img4007.webp" alt="Movie 6">
+                </button>
+                <h3>Movie 6</h3>
+                <p class="description"></p>
+                <button class="buy_now" onclick="redirectToPage('movie6.html')">Buy Now</button>
+            </div>
+            <div class="movie_block">
+                <button class="movie_button" onclick="redirectToPage('movie7.html')">
+                    <img class="movie_image" src="images/img4007.webp" alt="Movie 7">
+                </button>
+                <h3>Movie 7</h3>
+                <p class="description"></p>
+                <button class="buy_now" onclick="redirectToPage('movie7.html')">Buy Now</button>
+            </div>
+        </div>
+
+        <!--2nd row-->
+        <div class="movie_row">
+            <div class="movie_block">
+                <button class="movie_button" onclick="redirectToPage('movie8.html')">
+                    <img class="movie_image" src="images/img4007.webp" alt="Movie 8">
+                </button>
+                <h3>Movie 8</h3>
+                <p class="description"></p>
+                <button class="buy_now" onclick="redirectToPage('movie8.html')">Buy Now</button>
+            </div>
+            <div class="movie_block">
+                <button class="movie_button" onclick="redirectToPage('movie9.html')">
+                    <img class="movie_image" src="movie9.jpg" alt="Movie 9">
+                </button>
+                <h3>Movie 9</h3>
+                <p class="description"></p>
+                <button class="buy_now" onclick="redirectToPage('movie9.html')">Buy Now</button>
+            </div>
+            <div class="movie_block">
+                <button class="movie_button" onclick="redirectToPage('movie10.html')">
+                    <img class="movie_image" src="movie10.jpg" alt="Movie 10">
+                </button>
+                <h3>Movie 10</h3>
+                <p class="description"></p>
+                <button class="buy_now" onclick="redirectToPage('movie10.html')">Buy Now</button>
+            </div>
+            <div class="movie_block">
+                <button class="movie_button" onclick="redirectToPage('movie11.html')">
+                    <img class="movie_image" src="movie11.jpg" alt="Movie 11">
+                </button>
+                <h3>Movie 11</h3>
+                <p class="description"></p>
+                <button class="buy_now" onclick="redirectToPage('movie11.html')">Buy Now</button>
+            </div>
+        </div>
+    </div>
+
+    <div style="display: flex;justify-content: center;">
+        <button class="more_movies" onclick="redirectToPage('movie_list.html')">More Movies</button>
+    </div>
+
+
+    <!--footer-->
+    <footer>
+    <i>
+    Copyright &copy;2023 Sliver Village<br>
+    <a href="mailto:shengyuan@wang.com">shengyuan@wang.com</a>
+    </i>
+    </footer>
+</div>
+</body>
+</html>
+
