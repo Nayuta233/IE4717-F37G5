@@ -1,26 +1,114 @@
-<!-- FILEPATH: movie.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Movie Page</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+<title>Movies</title>
+<script>
+    // Redirect to a new page when a button is clicked
+    function redirectToPage(pageUrl) {
+        window.location.href = pageUrl;
+    }
+    
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display&display=swap" rel="stylesheet">
+
+<style>
+    /*global style */
+    /* Style the body */
+    body {
+        background-color: #1e1e1e; ;
+        max-width: 1200px;
+        min-width: 600px;
+        margin:auto;
+    }
+    /* Style the Header1 */
+    h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 64px;
+        text-align: center;
+        background: -webkit-linear-gradient(#757575, #bcbcbc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .underline{
+        width: 90%;
+        border: none;
+        border-top: 1px solid #757575; 
+        margin: 0 auto; 
+    }
+    /* Style the nav bar */
+    nav {
+        width: 90%;
+        margin-left: 5%;
+        /*font-family: 'Your Font', sans-serif; */
+        font-size: 24px;
+        font:bold;
+        background: -webkit-linear-gradient(#757575, #bcbcbc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-family: 'Open Sans', sans-serif;
+    }
+    nav a {
+        text-decoration: none; 
+    }
+    nav a:visited {
+        color: #ffffff; 
+    }
+    nav a:hover {
+        color: #ffffff;
+    }
+    nav ul {
+        display: flex;
+        list-style: none;
+        justify-content: space-between;
+    }
+    footer {
+        text-align: center;
+        font-size: small;
+        background: -webkit-linear-gradient(#757575, #bcbcbc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-family: 'Open Sans', sans-serif;
+    }
+    /* Global Style Ends Here */
+</style>
+
+<!-- 
+<link rel="stylesheet" type="text/css" href="style.css"> 
+-->
+
 </head>
+
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="movie.html">Movie</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <h1>Welcome to the Movie Page</h1>
-        <p>Here you can find information about the latest movies.</p>
-    </main>
-    <footer>
-        <p>&copy; 2021 My Movie Website</p>
-    </footer>
+    <div id="wrapper">
+        <!--header-->
+        <h1>Silver Village</h1>
+        <!--nav bar-->
+        <hr class="underline">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="Movie.html">Movies</a></li>
+                    <li><a href="#">Cinemas</a></li>
+                    <li><a href="#">Dining</a></li>
+                    <li><a href="#">User Profile</a></li>
+                </ul>
+            </nav>
+        </header>
+        <hr class="underline">
+    
+    
+    
+        <!--footer-->
+        <footer>
+        <i>
+        Copyright &copy;2023 Sliver Village<br>
+        <a href="mailto:shengyuan@wang.com">shengyuan@wang.com</a>
+        </i>
+        </footer>
+    </div>
 </body>
 </html>
